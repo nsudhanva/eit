@@ -58,5 +58,5 @@ plt.legend()
 plt.xticks(y_pos, colors_tuple)
 plt.ylabel('Pixels Count')
 plt.title('Pixels vs Colors')
-
+plt.savefig(PARENT_DIR + '\\assets\\eit_classify_plot')
 plt.show()
