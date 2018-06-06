@@ -34,6 +34,14 @@ classify_dict_count = {}
 for key, value in classify_dict.items():
     classify_dict_count[key] = len(value)
 
-plt.bar()
-plt.xticks()
+colors_tuple = tuple(classify_dict_count.keys())
+y_pos = np.arange(len(colors_tuple))
+pixels = classify_dict_count.values()
+
+plt.bar(y_pos, pixels, align='center', alpha=0.5, color=colors_tuple)
+plt.legend()
+plt.xticks(y_pos, colors_tuple)
+plt.ylabel('Pixels Count')
+plt.title('Pixels vs Colors')
+
 plt.show()
