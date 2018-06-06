@@ -38,6 +38,21 @@ colors_tuple = tuple(classify_dict_count.keys())
 y_pos = np.arange(len(colors_tuple))
 pixels = classify_dict_count.values()
 
+fig, ax = plt.subplots()
+rects = ax.bar(y_pos, pixels, align='center', alpha=0.5, color=colors_tuple)
+
+def autolabel(rects):
+    """
+    Attach a text label above each bar displaying its height
+    """
+    for rect in rects:
+        height = rect.get_height()
+        ax.text(rect.get_x() + rect.get_width()/2., height,
+                '%d' % int(height),
+                ha='center', va='bottom')
+        
+autolabel(rects)
+
 plt.bar(y_pos, pixels, align='center', alpha=0.5, color=colors_tuple)
 plt.legend()
 plt.xticks(y_pos, colors_tuple)
