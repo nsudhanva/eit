@@ -24,9 +24,12 @@ color_length = high / len(colors)
 color_length_array = np.full((1, len(intensity) - 1), round(color_length, 2))
 color_length_array = np.insert(color_length_array, 0, 0)
 intensity_range = np.cumsum(color_length_array)
+intensity_range_strings = []
 
 for index, color in enumerate(colors):
     # print(intensity_range[index], intensity_range[index + 1])
+    
+    intensity_range_strings.append(str(round(intensity_range[index], 2)) + ' - ' + str(round(intensity_range[index + 1], 2)))
     classify_dict[color] = np.where(np.logical_and(img_one_d >= intensity_range[index], img_one_d < intensity_range[index + 1]))[0]
 
 classify_dict_count = {}
@@ -54,8 +57,7 @@ def autolabel(rects):
 autolabel(rects)
 
 plt.bar(y_pos, pixels, align='center', alpha=0.5, color=colors_tuple)
-plt.legend()
-plt.xticks(y_pos, colors_tuple)
+plt.xticks(y_pos, tuple(intensity_range_strings))
 plt.ylabel('Pixels Count')
 plt.title('Pixels vs Colors')
 plt.savefig(PARENT_DIR + '\\assets\\eit_classify_plot')
