@@ -1,18 +1,20 @@
 import numpy as np
-import pandas as pd
+import scipy.misc
 import matplotlib.pyplot as plt
+from IPython import get_ipython
+get_ipython().run_line_magic('matplotlib', 'qt5')
 
-writer = pd.ExcelWriter('eit.xlsx')
-matrix = np.random.uniform(low=1, high=20, size=(100, 100))
-numbers = list(range(1, 101))
-attributes = ['R' + str(i) for i in numbers]
-print(attributes)
-df = pd.DataFrame(matrix)
-df.columns = attributes
-df.index = attributes
-print(df.head())
-df.to_excel(writer, 'Sheet1')
+img = plt.imread('eitcrop.png')
+img_two_d = img.mean(axis=2)
 
-plt.imshow(df, interpolation='bicubic')
-plt.colorbar()
+#plt.hist(x, edgecolor='black', bins = list(np.arange(0.0, 1.0, 0.05)))
+#plt.savefig('histogram.jpg')
+#plt.show()
+
+#plt.set_cmap('gray')
+#plt.contour(grayed)
+#plt.imshow(grayed, cmap='gray')
+#plt.axis('off')
+plt.clabel(cp, inline=True, fontsize=10)
+plt.contour(img_two_d)
 plt.show()
