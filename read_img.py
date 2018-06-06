@@ -15,7 +15,6 @@ collapsed = img.mean(axis=2)
 x = collapsed.ravel()
 y = img.ravel()
 
-
 #plt.hist(x, edgecolor='black', bins = list(np.arange(0.0, 1.0, 0.05)))
 #plt.savefig('histogram.jpg')
 #plt.show()
