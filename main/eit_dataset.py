@@ -3,6 +3,7 @@
 
 import numpy as np
 import pandas as pd
+import cv2
 import matplotlib.pyplot as plt
 import os
 
@@ -18,16 +19,16 @@ colors = ['brown', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'gray']
 image_files_list = ['eit_1.jpg', 'eit_2.jpg', 'eit_3.jpg', 'eit_4.jpg']
 
 # Initial setup of intensity range
-low = 0.0
-high = 1.1
-skip = 0.1
+low = 0
+high = 255
+skip = 1
 
 for image_file in image_files_list:
     # Import image - converts image into a 3D numpy array
-    img = plt.imread(PARENT_DIR + '\\assets\\eit_images\\' + image_file)
+    # img = cv2.imread(PARENT_DIR + '\\assets\\eit_images\\' + image_file, 0)
     
-    # Convert the colored-3D image into grayscale-2D
-    img_two_d = img.mean(axis=2)
+    # Import the colored-3D image into grayscale-2D
+    img_two_d = cv2.imread(PARENT_DIR + '\\assets\\eit_images\\' + image_file, 0)
 
     # Flatten 2D array to 1D array
     img_one_d = img_two_d.ravel()
