@@ -17,7 +17,7 @@ colors = ['brown', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'gray']
 
 image_files_list = []
 
-for i in range(1, 101):
+for i in range(1, 1001):
     image_files_list.append('eit_' + str(i) + '.png')
 
 # Initial setup of intensity range
@@ -62,6 +62,7 @@ columns_tuple_list = []
 for color, intensity_range in zip(colors, intensity_range_strings):
     columns_tuple_list.append((color, intensity_range))
     
+writer = pd.ExcelWriter(PARENT_DIR + '\\assets\\datasets\\' + 'eit.xlsx')
 df = pd.DataFrame(classify_dict)
 df.columns = pd.MultiIndex.from_tuples(columns_tuple_list)
-df.to_csv(PARENT_DIR + '\\assets\\datasets\\' + 'eit.csv')
+df.to_excel(writer, 'Sheet1')
