@@ -3,18 +3,27 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+import scipy.interpolate
 import os
-
-# Import to show plots in seperate Windows
-from IPython import get_ipython
-get_ipython().run_line_magic('matplotlib', 'qt5')
 
 # CURR and PARENT directory constants
 CURR_DIR = os.path.dirname(os.path.abspath('__file__'))
 PARENT_DIR = os.path.abspath(os.path.join(CURR_DIR, os.pardir))
 
-# Import image - converts image into a 3D numpy array
-img = cv2.imread(PARENT_DIR + '\\assets\\eit_images\\eitcrop.png')
-
-
-
+for i in range(1, 101):
+    # Generate data:
+    x, y, z = 10 * np.random.random((3,100))
+    
+    # Set up a regular grid of interpolation points
+    xi, yi = np.linspace(x.min(), x.max(), 100), np.linspace(y.min(), y.max(), 100)
+    xi, yi = np.meshgrid(xi, yi)
+    
+    # Interpolate
+    rbf = scipy.interpolate.Rbf(x, y, z, function='linear')
+    zi = rbf(xi, yi)
+    
+    clrs = ('brown', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'gray')
+    fig = plt.contourf(zi, colors=clrs)
+    plt.axis('off')
+    plt.savefig(PARENT_DIR + '\\assets\\eit_images\\' + "eit_" + str(i) + ".png", bbox_inches='tight')
+     
