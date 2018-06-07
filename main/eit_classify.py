@@ -9,12 +9,12 @@ import os
 from IPython import get_ipython
 get_ipython().run_line_magic('matplotlib', 'qt5')
 
-# ROOT and PARENT directory constants
-ROOT_DIR = os.path.dirname(os.path.abspath('__file__'))
-PARENT_DIR = os.path.abspath(os.path.join(ROOT_DIR, os.pardir))
+# CURR and PARENT directory constants
+CURR_DIR = os.path.dirname(os.path.abspath('__file__'))
+PARENT_DIR = os.path.abspath(os.path.join(CURR_DIR, os.pardir))
 
 # Import image - converts image into a 3D numpy array
-img = plt.imread(PARENT_DIR + '\\assets\\eitcrop.png')
+img = plt.imread(PARENT_DIR + '\\assets\\eit_images\\eitcrop.png')
 
 # Convert the colored-3D image into grayscale-2D
 img_two_d = img.mean(axis=2)
@@ -76,5 +76,5 @@ plt.bar(y_pos, pixels, align='center', alpha=0.5, color=colors_tuple)
 plt.xticks(y_pos, tuple(intensity_range_strings))
 plt.ylabel('Pixels Count')
 plt.title('Pixels vs Colors')
-plt.savefig(PARENT_DIR + '\\assets\\eit_classify_plot')
+plt.savefig(PARENT_DIR + '\\assets\\plots\\eit_classify_plot.png')
 plt.show()
