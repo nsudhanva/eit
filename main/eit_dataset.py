@@ -24,7 +24,16 @@ high = 255
 skip = 1
    
 classify_dict = {}
-    
+
+# Generate intensity range
+intensity = np.arange(low, high, skip)
+color_length = high / len(colors)
+color_length_array = np.full((1, len(intensity) - 1), round(color_length, 2))
+color_length_array = np.insert(color_length_array, 0, 0)
+
+# Calculate cumulative sum of average range of intensity
+intensity_range = np.cumsum(color_length_array)
+
 for c in colors:
     classify_dict[c] = []
 
@@ -38,14 +47,6 @@ for image_file in image_files_list:
     # Flatten 2D array to 1D array
     img_one_d = img_two_d.ravel()
 
-    # Generate intensity range
-    intensity = np.arange(low, high, skip)
-    color_length = high / len(colors)
-    color_length_array = np.full((1, len(intensity) - 1), round(color_length, 2))
-    color_length_array = np.insert(color_length_array, 0, 0)
-
-    # Calculate cumulative sum of average range of intensity
-    intensity_range = np.cumsum(color_length_array)
     intensity_range_strings = []
 
     # Create a classify dict of colors mapping to their datapoints (array)
@@ -54,5 +55,11 @@ for image_file in image_files_list:
         intensity_range_strings.append(str(round(intensity_range[index], 2)) + ' - ' + str(round(intensity_range[index + 1], 2)))
         classify_dict[color].append(len(np.where(np.logical_and(img_one_d >= intensity_range[index], img_one_d < intensity_range[index + 1]))[0]))
 
-print(classify_dict)
-
+columns_tuple_list = []
+# print(classify_dict)
+for color, intensity_range in zip(colors, intensity_range_strings):
+    columns_tuple_list.append((color, intensity_range))
+    
+df = pd.DataFrame(classify_dict)
+df.columns = pd.MultiIndex.from_tuples(columns_tuple_list)
+df.to_csv(PARENT_DIR + '\\assets\\datasets\\' + 'eit.csv')
