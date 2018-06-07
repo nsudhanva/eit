@@ -1,16 +1,24 @@
-import numpy as np
-import scipy.misc
+# Copyright (c) 2018, Faststream Technologies
+# Author: Sudhanva Narayana
+
 import matplotlib.pyplot as plt
 import os
+
+# Import to show plots in seperate Windows
 from IPython import get_ipython
 get_ipython().run_line_magic('matplotlib', 'qt5')
 
+# ROOT and PARENT directory constants
 ROOT_DIR = os.path.dirname(os.path.abspath('__file__'))
 PARENT_DIR = os.path.abspath(os.path.join(ROOT_DIR, os.pardir))
 
+# Import image - converts image into a 3D numpy array
 img = plt.imread(PARENT_DIR + '\\assets\\eitcrop.png')
+
+# Convert the colored-3D image into grayscale-2D
 img_two_d = img.mean(axis=2)
 
+# Plot a contour plot based on the list of colors and save an image
 clrs = ('brown', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'gray')
 cp = plt.contourf(img_two_d, colors=clrs)
 plt.colorbar(cp)
