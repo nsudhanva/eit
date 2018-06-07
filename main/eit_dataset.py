@@ -15,7 +15,10 @@ CURR_DIR = os.path.dirname(os.path.abspath('__file__'))
 PARENT_DIR = os.path.abspath(os.path.join(CURR_DIR, os.pardir))
 colors = ['brown', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'gray']
 
-image_files_list = ['eit_1.jpg', 'eit_2.jpg', 'eit_3.jpg', 'eit_4.jpg']
+image_files_list = []
+
+for i in range(1, 101):
+    image_files_list.append('eit_' + str(i) + '.png')
 
 # Initial setup of intensity range
 low = 0

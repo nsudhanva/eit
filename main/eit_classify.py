@@ -3,6 +3,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+import cv2
 import os
 
 # Import to show plots in seperate Windows
@@ -14,7 +15,7 @@ CURR_DIR = os.path.dirname(os.path.abspath('__file__'))
 PARENT_DIR = os.path.abspath(os.path.join(CURR_DIR, os.pardir))
 
 # Import image - converts image into a 3D numpy array
-img = plt.imread(PARENT_DIR + '\\assets\\eit_images\\eitcrop.png')
+img = cv2.imread(PARENT_DIR + '\\assets\\eit_images\\eitcrop.png')
 
 # Convert the colored-3D image into grayscale-2D
 img_two_d = img.mean(axis=2)
