@@ -8,8 +8,8 @@ import matplotlib.pyplot as plt
 import os
 
 # Import to show plots in seperate Windows
-from IPython import get_ipython
-get_ipython().run_line_magic('matplotlib', 'qt5')
+# from IPython import get_ipython
+# get_ipython().run_line_magic('matplotlib', 'qt5')
 
 # CURR and PARENT directory constants
 CURR_DIR = os.path.dirname(os.path.abspath('__file__'))
@@ -22,6 +22,11 @@ image_files_list = ['eit_1.jpg', 'eit_2.jpg', 'eit_3.jpg', 'eit_4.jpg']
 low = 0
 high = 255
 skip = 1
+   
+classify_dict = {}
+    
+for c in colors:
+    classify_dict[c] = []
 
 for image_file in image_files_list:
     # Import image - converts image into a 3D numpy array
@@ -32,8 +37,6 @@ for image_file in image_files_list:
 
     # Flatten 2D array to 1D array
     img_one_d = img_two_d.ravel()
-
-    classify_dict = {}
 
     # Generate intensity range
     intensity = np.arange(low, high, skip)
@@ -49,12 +52,7 @@ for image_file in image_files_list:
     for index, color in enumerate(colors):
         # print(intensity_range[index], intensity_range[index + 1])
         intensity_range_strings.append(str(round(intensity_range[index], 2)) + ' - ' + str(round(intensity_range[index + 1], 2)))
-        classify_dict[color] = np.where(np.logical_and(img_one_d >= intensity_range[index], img_one_d < intensity_range[index + 1]))[0]
+        classify_dict[color].append(len(np.where(np.logical_and(img_one_d >= intensity_range[index], img_one_d < intensity_range[index + 1]))[0]))
 
-    # Create a count of classified dict
-    classify_dict_count = {}
+print(classify_dict)
 
-    for key, value in classify_dict.items():
-        classify_dict_count[key] = [len(value)]
-
-    print(classify_dict_count)
