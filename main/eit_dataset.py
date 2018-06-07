@@ -4,7 +4,6 @@
 import numpy as np
 import pandas as pd
 import cv2
-import matplotlib.pyplot as plt
 import os
 
 # Import to show plots in seperate Windows
@@ -39,13 +38,13 @@ for c in colors:
 
 for image_file in image_files_list:
     # Import image - converts image into a 3D numpy array
-    # img = cv2.imread(PARENT_DIR + '\\assets\\eit_images\\' + image_file, 0)
+    img = cv2.imread(PARENT_DIR + '\\assets\\eit_images\\' + image_file)
     
     # Import the colored-3D image into grayscale-2D
-    img_two_d = cv2.imread(PARENT_DIR + '\\assets\\eit_images\\' + image_file, 0)
+    # img_two_d = cv2.imread(PARENT_DIR + '\\assets\\eit_images\\' + image_file, 0)
 
     # Flatten 2D array to 1D array
-    img_one_d = img_two_d.ravel()
+    img_one_d = img.ravel()
 
     intensity_range_strings = []
 
