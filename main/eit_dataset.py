@@ -49,13 +49,16 @@ for image_file in image_files_list:
     # Flatten 2D array to 1D array
     img_one_d = img.ravel()
 
+    total_length = len(img_one_d)
     intensity_range_strings = []
 
     # Create a classify dict of colors mapping to their datapoints (array)
     for index, color in enumerate(colors):
         # print(intensity_range[index], intensity_range[index + 1])
         intensity_range_strings.append(str(round(intensity_range[index], 2)) + ' - ' + str(round(intensity_range[index + 1], 2)))
-        classify_dict[color].append(len(np.where(np.logical_and(img_one_d >= intensity_range[index], img_one_d < intensity_range[index + 1]))[0]))
+        intensity_range_length = len(np.where(np.logical_and(img_one_d >= intensity_range[index], img_one_d < intensity_range[index + 1]))[0])
+        percentage = (intensity_range_length/total_length) * 100
+        classify_dict[color].append([intensity_range_length, percentage])
 
 columns_tuple_list = []
 # print(classify_dict)
