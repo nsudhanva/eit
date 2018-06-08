@@ -58,7 +58,7 @@ for image_file in image_files_list:
         intensity_range_strings.append(str(round(intensity_range[index], 2)) + ' - ' + str(round(intensity_range[index + 1], 2)))
         intensity_range_length = len(np.where(np.logical_and(img_one_d >= intensity_range[index], img_one_d < intensity_range[index + 1]))[0])
         percentage = (intensity_range_length/total_length) * 100
-        classify_dict[color].append([intensity_range_length, percentage])
+        classify_dict[color].append([intensity_range_length, round(percentage, 2)])
 
 columns_tuple_list = []
 # print(classify_dict)
