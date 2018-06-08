@@ -13,6 +13,10 @@ import os
 CURR_DIR = os.path.dirname(os.path.abspath('__file__'))
 PARENT_DIR = os.path.abspath(os.path.join(CURR_DIR, os.pardir))
 
-df = pd.read_excel(PARENT_DIR + '\\assets\\datasets\\eit.xlsx', sheet_name="Sheet1", skiprows=[1, 2])
-
+df = pd.read_csv(PARENT_DIR + '\\assets\\datasets\\eit.csv', index_col=[0], header = [0], skiprows= [1] ,skipinitialspace=True)
+df_ranges = pd.read_csv(PARENT_DIR + '\\assets\\datasets\\eit.csv', index_col=[0], header = [0], skiprows= [0], skipinitialspace=True, nrows=0)
+df_columns = list(df_ranges.columns)
 outlier = df['red'].quantile(0.99)
+
+target_series = pd.Series()
+
