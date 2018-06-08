@@ -69,7 +69,7 @@ columns_tuple_list = []
 for color, intensity_range in zip(colors, intensity_range_strings):
     columns_tuple_list.append((color, intensity_range))
 
-columns_p_tuple = list(zip(*[iter(colors_p)]*1, [100] * 8))
+columns_p_tuple = list(zip(*[iter(colors_p)]*1, ['100'] * 8))
 columns_tuple_list =  columns_tuple_list + columns_p_tuple
 columns_tuple_list.sort(key=lambda tup: tup[0])
 
