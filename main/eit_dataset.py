@@ -69,11 +69,12 @@ columns_tuple_list = []
 # print(classify_dict)
 for color, intensity_range in zip(colors, intensity_range_strings):
     columns_tuple_list.append((color, intensity_range))
-
+    # print(color, intensity_range)
+    
 columns_p_tuple = list(zip(*[iter(colors_p)]*1, ['100'] * 8))
-# columns_tuple_list.sort(key=lambda tup: tup[0])
+columns_tuple_list.sort(key=lambda tup: tup[0])
 
-writer = pd.ExcelWriter(PARENT_DIR + '\\assets\\datasets\\' + 'eit.xlsx')
 df = pd.DataFrame(classify_dict)
 df.columns = pd.MultiIndex.from_tuples(columns_tuple_list)
-df.to_excel(writer, 'Sheet1')
+df = df[colors]
+df.to_csv(PARENT_DIR + '\\assets\\datasets\\' + 'eit.csv')
