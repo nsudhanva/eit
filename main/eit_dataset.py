@@ -14,6 +14,7 @@ import os
 CURR_DIR = os.path.dirname(os.path.abspath('__file__'))
 PARENT_DIR = os.path.abspath(os.path.join(CURR_DIR, os.pardir))
 colors = ['brown', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'gray']
+colors = colors[::-1]
 colors_p = [i + '_%' for i in colors]
 
 image_files_list = []
@@ -78,3 +79,8 @@ df = pd.DataFrame(classify_dict)
 df.columns = pd.MultiIndex.from_tuples(columns_tuple_list)
 df = df[colors]
 df.to_csv(PARENT_DIR + '\\assets\\datasets\\' + 'eit.csv')
+
+df_p = pd.DataFrame(classify_dict_per)
+df_p.columns = pd.MultiIndex.from_tuples(columns_tuple_list)
+df_p = df_p[colors]
+df_p.to_csv(PARENT_DIR + '\\assets\\datasets\\' + 'eit_p.csv')
