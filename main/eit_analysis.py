@@ -16,3 +16,5 @@ PARENT_DIR = os.path.abspath(os.path.join(CURR_DIR, os.pardir))
 df = pd.read_excel(PARENT_DIR + '\\assets\\datasets\\eit.xlsx', header=[0,1], 
                    index_col=[0,1], 
                    sheet_name="Sheet1")
+
+otlier = df['red'].quantile(0.99)
