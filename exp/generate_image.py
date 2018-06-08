@@ -26,4 +26,4 @@ for i in range(1, 1001):
     plt.contourf(zi, colors=clrs)
     plt.axis('off')
     plt.savefig(PARENT_DIR + '\\assets\\eit_images\\' + "eit_" + str(i) + ".png", bbox_inches='tight')
-     
+         
