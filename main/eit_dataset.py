@@ -14,6 +14,7 @@ import os
 CURR_DIR = os.path.dirname(os.path.abspath('__file__'))
 PARENT_DIR = os.path.abspath(os.path.join(CURR_DIR, os.pardir))
 colors = ['brown', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'gray']
+colors_p = [i + '_%' for i in colors]
 
 image_files_list = []
 
@@ -36,9 +37,10 @@ color_length_array = np.insert(color_length_array, 0, 0)
 # Calculate cumulative sum of average range of intensity
 intensity_range = np.cumsum(color_length_array)
 
-for c in colors:
+for c, p in zip(colors, colors_p):
     classify_dict[c] = []
-
+    classify_dict[p] = []
+    
 for image_file in image_files_list:
     # Import image - converts image into a 3D numpy array
     img = cv2.imread(PARENT_DIR + '\\assets\\eit_images\\' + image_file)
@@ -53,18 +55,24 @@ for image_file in image_files_list:
     intensity_range_strings = []
 
     # Create a classify dict of colors mapping to their datapoints (array)
-    for index, color in enumerate(colors):
+    for index, (color, color_p) in enumerate(zip(colors, colors_p)):
         # print(intensity_range[index], intensity_range[index + 1])
         intensity_range_strings.append(str(round(intensity_range[index], 2)) + ' - ' + str(round(intensity_range[index + 1], 2)))
         intensity_range_length = len(np.where(np.logical_and(img_one_d >= intensity_range[index], img_one_d < intensity_range[index + 1]))[0])
         percentage = (intensity_range_length/total_length) * 100
-        classify_dict[color].append([intensity_range_length, round(percentage, 2)])
+        percentage = round(percentage, 2)
+        classify_dict[color].append(intensity_range_length)
+        classify_dict[color_p].append(percentage)
 
 columns_tuple_list = []
 # print(classify_dict)
 for color, intensity_range in zip(colors, intensity_range_strings):
     columns_tuple_list.append((color, intensity_range))
-    
+
+columns_p_tuple = list(zip(*[iter(colors_p)]*1, [100] * 8))
+columns_tuple_list =  columns_tuple_list + columns_p_tuple
+columns_tuple_list.sort(key=lambda tup: tup[0])
+
 writer = pd.ExcelWriter(PARENT_DIR + '\\assets\\datasets\\' + 'eit.xlsx')
 df = pd.DataFrame(classify_dict)
 df.columns = pd.MultiIndex.from_tuples(columns_tuple_list)
