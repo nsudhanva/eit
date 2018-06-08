@@ -15,8 +15,33 @@ PARENT_DIR = os.path.abspath(os.path.join(CURR_DIR, os.pardir))
 
 df = pd.read_csv(PARENT_DIR + '\\assets\\datasets\\eit.csv', index_col=[0], header = [0], skiprows= [1] ,skipinitialspace=True)
 df_ranges = pd.read_csv(PARENT_DIR + '\\assets\\datasets\\eit.csv', index_col=[0], header = [0], skiprows= [0], skipinitialspace=True, nrows=0)
-df_columns = list(df_ranges.columns)
-outlier = df['red'].quantile(0.99)
+df_columns_ranges = list(df_ranges.columns)
+df_columns_colors = list(df.columns)
+df_means = df.mean()
 
-target_series = pd.Series()
+target_series = []
 
+for i, color in enumerate(df_columns_colors):
+    target_series.append(df[color] > df_means[i])
+    
+target = np.array(target_series)
+target = np.transpose(target)
+
+target_bools = []
+
+for i in range(len(target)):
+    if np.sum(target[i]) >= 3:
+        target_bools.append(1)
+    else:
+        target_bools.append(0)
+        
+target_bools = pd.Series(target_bools)
+
+columns_tuple_list = []
+
+for color, intensity_range in zip(df_columns_colors, df_columns_ranges):
+    columns_tuple_list.append((color, intensity_range))
+    
+df.columns = pd.MultiIndex.from_tuples(columns_tuple_list)
+df['target'] = target_bools
+df.to_csv(PARENT_DIR + '\\assets\\datasets\\' + 'eit_data.csv')
