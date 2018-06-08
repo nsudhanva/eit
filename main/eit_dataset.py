@@ -27,6 +27,7 @@ high = 255
 skip = 1
    
 classify_dict = {}
+classify_dict_per = {}
 
 # Generate intensity range
 intensity = np.arange(low, high, skip)
@@ -39,7 +40,7 @@ intensity_range = np.cumsum(color_length_array)
 
 for c, p in zip(colors, colors_p):
     classify_dict[c] = []
-    classify_dict[p] = []
+    classify_dict_per[p] = []
     
 for image_file in image_files_list:
     # Import image - converts image into a 3D numpy array
@@ -62,7 +63,7 @@ for image_file in image_files_list:
         percentage = (intensity_range_length/total_length) * 100
         percentage = round(percentage, 2)
         classify_dict[color].append(intensity_range_length)
-        classify_dict[color_p].append(percentage)
+        classify_dict_per[color_p].append(percentage)
 
 columns_tuple_list = []
 # print(classify_dict)
@@ -70,8 +71,7 @@ for color, intensity_range in zip(colors, intensity_range_strings):
     columns_tuple_list.append((color, intensity_range))
 
 columns_p_tuple = list(zip(*[iter(colors_p)]*1, ['100'] * 8))
-columns_tuple_list =  columns_tuple_list + columns_p_tuple
-columns_tuple_list.sort(key=lambda tup: tup[0])
+# columns_tuple_list.sort(key=lambda tup: tup[0])
 
 writer = pd.ExcelWriter(PARENT_DIR + '\\assets\\datasets\\' + 'eit.xlsx')
 df = pd.DataFrame(classify_dict)
