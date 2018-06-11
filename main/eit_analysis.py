@@ -27,13 +27,13 @@ for i, color in enumerate(df_columns_colors):
     target_series.append(df[color] > df_means[i])
     
 target = np.array(target_series)
-target = np.transpose(target)
+target = np.transpose(target[-4:])
 
 target_bools = []
 
 # Create target_bools which creates the final Series of target column
 for i in range(len(target)):
-    if np.sum(target[i]) >= 3:
+    if np.sum(target[i]) >= 1:
         target_bools.append(1)
     else:
         target_bools.append(0)
