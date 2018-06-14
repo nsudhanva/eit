@@ -67,6 +67,6 @@ CTO, Faststream Technologies
 
 Copyright(c) 2018, [Faststream Technologies](https://www.faststreamtech.com)
 
-![Faststream Logo](https://www.faststreamtech.com/wp-content/uploads/2017/09/fstlogo.png "Faststream Tech")
+![Faststream Logo](https://netmyjob.com/uploads/employer/1518498102-FaststreamTechnologiesPrivatelimitedlogo.png "Faststream Tech")
 
 Author: [Sudhanva Narayana](https://www.sudhanva.in)
