@@ -1,20 +1,17 @@
 # "Performance of various Machine Learning Algorithms on Electrical Impedance Tomography Images"
 
-### Copyright(c) [Faststream Technologies](https://www.faststreamtech.com)
-### Author: [Sudhanva Narayana](https://www.sudhanva.in)
-
 # Overview
 
-### This report provides an overview of current practice of Electrical Impedance Tomography (EIT), its imaging and use-cases. Electrical Impedance Tomography is a non-invasive type of medical imaging. These advances are improving our capacity to treat and even prevent cancers. The full implications of the subject remain to be explored. Examples of research techniques used in this project are detailed.  
+This report provides an overview of current practice of Electrical Impedance Tomography (EIT), its imaging and use-cases. Electrical Impedance Tomography is a non-invasive type of medical imaging. These advances are improving our capacity to treat and even prevent cancers. The full implications of the subject remain to be explored. Examples of research techniques used in this project are detailed.  
 
 # Dependencies
 
-### 1.	Python 3.x 
-### 2.	Numpy 
-### 3.	Scipy
-### 4.	Pandas
-### 5.	Matplotlib
-### 6.	Sci-kit learn
+1.	Python 3.x 
+2.	Numpy 
+3.	Scipy
+4.	Pandas
+5.	Matplotlib
+6.	Sci-kit learn
 
 # Important Files and Folders
 
@@ -41,14 +38,32 @@ eit
 
 # Usage
 
-### * ```read_img.py``` - Read an image into code
-### * ```generate_images.py``` - Generate images
-### * ```eit_dataset.py``` - Generate dataset
-### * ```eit_analysis.py``` - Assign target values
-### * ```eit_classify.py``` - Create contour plots and classify images
+* ```read_img.py``` - Read an image into code
+* ```generate_images.py``` - Generate images
+* ```eit_dataset.py``` - Generate dataset
+* ```eit_analysis.py``` - Assign target values
+* ```eit_classify.py``` - Create contour plots and classify images
+
+# Results
+
+| No |  Algorithms	                    | Accuracy (%)  |
+| ---|:--------------------------------:| -------------:|
+| 1	 |  K Nearest Neighbours	        | 93.6%         |
+| 2	 |  Decision Tree Classification	| 99.5%         |
+| 3	 |  Kernel Support Vector Machines	| 92.8%         |
+| 4	 |  Logistic Regression	            | 88%           |
+| 5	 |  Naive Bayes	                    | 72%           |
+| 6	 |  Random Forest Classification	| 99.5%         |
+| 7	 |  Support Vector Machines	        | 87.2%         |
+
 
 # Credits
 
-##  [Vinod Agrawal](https://in.linkedin.com/in/vinod-agrawal-8020488)
+[Vinod Agrawal](https://in.linkedin.com/in/vinod-agrawal-8020488)
 
-### CTO, Faststream Technologies
+CTO, Faststream Technologies
+
+# License
+
+Copyright(c) 2018, [Faststream Technologies](https://www.faststreamtech.com)
+Author: [Sudhanva Narayana](https://www.sudhanva.in)
