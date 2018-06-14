@@ -66,4 +66,7 @@ CTO, Faststream Technologies
 # License
 
 Copyright(c) 2018, [Faststream Technologies](https://www.faststreamtech.com)
+
+![Faststream Logo](https://www.faststreamtech.com/wp-content/uploads/2017/09/fstlogo.png "Faststream Tech")
+
 Author: [Sudhanva Narayana](https://www.sudhanva.in)
