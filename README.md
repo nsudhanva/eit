@@ -1,4 +1,4 @@
-# "Performance of various Machine Learning Algorithms on Electrical Impedance Tomography Images"
+# Performance of various Machine Learning Algorithms on Electrical Impedance Tomography Images
 
 # Overview
 
@@ -49,12 +49,12 @@ eit
 | No |  Algorithms	                    | Accuracy (%)  |
 | ---|:--------------------------------:| -------------:|
 | 1	 |  K Nearest Neighbours	        | 93.6%         |
-| 2	 |  Decision Tree Classification	| 99.5%         |
-| 3	 |  Kernel Support Vector Machines	| 92.8%         |
-| 4	 |  Logistic Regression	            | 88%           |
-| 5	 |  Naive Bayes	                    | 72%           |
-| 6	 |  Random Forest Classification	| 99.5%         |
-| 7	 |  Support Vector Machines	        | 87.2%         |
+| 2	 |  Decision Tree Classification	| 98.8%         |
+| 3	 |  Kernel Support Vector Machines	| 94%           |
+| 4	 |  Logistic Regression	            | 88.4%         |
+| 5	 |  Naive Bayes	                    | 92.4%         |
+| 6	 |  Random Forest Classification	| 99.2%         |
+| 7	 |  Support Vector Machines	        | 88%           |
 
 
 # Credits
@@ -66,7 +66,5 @@ CTO, Faststream Technologies
 # License
 
 Copyright(c) 2018, [Faststream Technologies](https://www.faststreamtech.com)
-
-![Faststream Logo](https://netmyjob.com/uploads/employer/1518498102-FaststreamTechnologiesPrivatelimitedlogo.png "Faststream Tech")
 
 Author: [Sudhanva Narayana](https://www.sudhanva.in)
