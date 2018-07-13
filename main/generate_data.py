@@ -9,6 +9,7 @@ df = pd.DataFrame()
 ages = np.random.randint(low=10, high=80, size=(1000,))
 sexes = ['male', 'female'] * 500
 weights = np.arange(2, 110)
+resistances = np.arrange(1, 70)
 
 # variation = 10 - 20
 
@@ -39,6 +40,7 @@ random.shuffle(sexes)
 random.shuffle(ages)
 
 final_weights = []
+impedances = []
 
 for i, j in zip(ages, sexes):
     if j == 'male':
@@ -51,3 +53,8 @@ for i, j in zip(ages, sexes):
             final_weights.append(random.sample(list(weights[25:45]), 1)[0])
         else:
             final_weights.append(random.sample(list(weights[50:90]), 1)[0])
+    impedances = []
+            
+df['age'] = ages
+df['sex'] = sexes
+df['weight'] = final_weights
