@@ -67,4 +67,6 @@ CTO, Faststream Technologies
 
 Copyright(c) 2018, [Faststream Technologies](https://www.faststreamtech.com)
 
-Author: [Sudhanva Narayana](https://www.sudhanva.in)
+Author: 
+* [Sudhanva Narayana](https://www.sudhanva.in)
+* [Shreyas S](https://www.shreyas.im)
