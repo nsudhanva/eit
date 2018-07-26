@@ -12,6 +12,7 @@ This report provides an overview of current practice of Electrical Impedance Tom
 4.	Pandas
 5.	Matplotlib
 6.	Sci-kit learn
+7.  OpenCV Python
 
 # Important Files and Folders
 
@@ -38,11 +39,37 @@ eit
 
 # Usage
 
-* ```read_img.py``` - Read an image into code
-* ```generate_images.py``` - Generate images
-* ```eit_dataset.py``` - Generate dataset
-* ```eit_analysis.py``` - Assign target values
-* ```eit_classify.py``` - Create contour plots and classify images
+1.	```generate_image.py```
+    * Generates 1000 images
+    * Linspace and Meshgrid are numpy methods 
+
+2.	```read_img.py```
+    * Reads an image into code
+    * ```matrix``` contains three dimensional array of image
+    * ```img``` contains three dimensional array of image - image import
+    * ```grayscale``` contains two dimensional array of image
+    * ```x``` contains x dimension of image
+    * ```y``` contains y dimension of image
+
+3.	```eit.py```
+    * Plots a contour graphs
+    * Adds list of colors and be saved as an image
+
+4.	```eit_dataset.py```
+    * Generates dataset without labels - creates file ```eit.csv```
+    * ```intensity_range_strings``` contains ranges of intensities
+    * ```classify_dict``` contains dataset in the form of dictionary
+    * ```df``` contains final file to be converted to csv
+
+5.	```eit_analysis.py```
+    * Assigns targets 1 or 0 and created another dataset - creates file ```eit_data.csv```
+    * ```target``` contains target array 0s and 1s
+
+6.	```eit_classify.py```
+    * Generate classification plots - generates ```eit_contour_plot.csv```
+    * ```autolabel``` - function labels bar graphs
+
+7.	```<*>.ipynb``` - All classification ML algorithms - '<*>' means all files
 
 # Results
 
