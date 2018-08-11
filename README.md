@@ -83,18 +83,16 @@ eit
 | 6	 |  Random Forest Classification	| 99.2%         |
 | 7	 |  Support Vector Machines	        | 88%           |
 
+# License
+
+Copyright(c) 2018, [Faststream Technologies](https://www.faststreamtech.com)
+
+Authors: 
+* [Sudhanva Narayana](https://www.sudhanva.in)
+* [Shreyas S](https://www.shreyas.im)
 
 # Credits
 
 [Vinod Agrawal](https://in.linkedin.com/in/vinod-agrawal-8020488)
 
 CTO, Faststream Technologies
-
-# License
-
-Copyright(c) 2018, [Faststream Technologies](https://www.faststreamtech.com)
-
-=======
-Author: 
-* [Sudhanva Narayana](https://www.sudhanva.in)
-* [Shreyas S](https://www.shreyas.im)
